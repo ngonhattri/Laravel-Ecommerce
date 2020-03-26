@@ -1,0 +1,15 @@
+<form name="myForm">
+    <fieldset>
+      <legend>Đổi avatar</legend>
+      <br>Photo:
+      <input type="file" ngf-select ng-model="picFile" name="file" accept="image/*" ngf-max-size="2MB" required ngf-model-invalid="errorFile">
+      <i ng-show="myForm.file.$error.required">*Chưa chọn hình</i><br>
+      <i ng-show="myForm.file.$error.maxSize">File quá lớn
+          <% errorFile.size / 1000000|number:1 %> MB: max 2M</i>
+      <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="thumb" style="width: 300px; height: 300px;"> 
+      <button ng-click="picFile = null" ng-show="picFile">Xóa</button>
+      <br>
+      <button ng-disabled="!myForm.$valid" ng-click="uploadPic(picFile)">Đổi avatar</button>
+    </fieldset>
+    <br>
+ </form>

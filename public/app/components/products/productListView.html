@@ -1,0 +1,61 @@
+<div class="main-content-inner">
+        <div class="page-content">
+            <div class="widget-box">
+                <div class="widget-header">
+                    <h4 class="widget-title">Quản lý cửa hàng</h4>
+                    <div class="widget-toolbar no-border">
+                        <a ui-sref="product_add" class="btn btn-sm btn-info">
+                            <i class="ace-icon fa fa-plus"></i> Thêm mới cửa hàng
+                        </a>
+                    </div>
+                </div>
+                <div class="widget-body">
+                    <div class="widget-main">
+                        <div class="search-active-form">
+                            <div class="pageSizebox pull-right">
+                                <div class="pageSizeNumber">
+                                    Tổng số bản ghi: <% totalItem %>
+                                </div>
+                            </div>
+                        </div><!-- search-form -->
+                        <table id="simple-table" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="20%">Tên</th>
+                                    <th width="15%">Số điện thoại</th>
+                                    <th width="20%">Giá</th>
+                                    <th width="15%">Tình trạng</th>
+                                    <th width="15%">Số lượng</th>
+                                    <th width="15%">Tùy chọn</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in posts">
+                                    <td><% item.name %></td>
+                                    <td><% item.phone %></td>
+                                    <td><% item.price | currency : "VND " : 3 %></td>
+                                    <td ng-if="item.out_of_stock == 1">Còn hàng</td>
+                                    <td ng-if="item.out_of_stock == 0">Hết hàng</td>
+                                    <td><% item.quantity %></td>
+                                    <td>
+                                        <div class="hidden-sm hidden-xs btn-group">
+                                            <a ui-sref="product_edit({id:item.id})">Sửa</a> |
+                                            <a ui-sref="product_image({id:item.id})">Đổi hình</a> |
+                                            <a ng-click="deletePost(item.id)">Xóa</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div ng-if="loading">
+                            <div class="col-xs-4"></div>
+                            <div class="col-xs-4">
+                                <i class="fa fa-refresh fa-4x fa-spin"></i> <label class="label label-primary">Đang tải...</label>
+                            </div>
+                            <div class="col-xs-4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

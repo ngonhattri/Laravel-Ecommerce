@@ -1,0 +1,40 @@
+<div>
+    <form novalidate name="frmUpdate" role="form" ng-submit="UpdateProfile()"> 
+        <div class="register-top-grid">
+            <h3>Thông tin người dùng tới khách hàng</h3>
+            <div>
+                <span>Họ và tên<label>*</label></span>
+                <input type="text" name="name" ng-model="post.name" required> 
+                <span ng-show="frmEdit.name.$invalid" class="text-danger">Bạn chưa nhập họ và tên</span>
+            </div>
+            <div>
+                <span>Số điện thoại<label>*(+84)</label></span>
+                <input type="number" name="phone" ng-model="post.phone" required> 
+                <span ng-show="frmEdit.phone.$invalid" class="text-danger">Bạn chưa nhập số điện thoại</span>
+            </div>
+            <div>
+                <span>Facebook</span>
+                <input type="text" name="facebook" ng-model="post.facebook"> 
+            </div>
+            <div>
+                <span>Instagram</span>
+                <input type="text" name="instagram" ng-model="post.instagram">
+            </div>
+            <div>
+                <span>Giới thiệu bản thân</span>
+                <textarea name="about" ng-model="post.about" cols="45px;"></textarea>
+            </div>
+            <div>
+                <span>Trường<label>*</label></span>
+                <select name="id_school"  class="chosen-select form-control" ng-model="post.id_school" ng-options="option.id as option.name for option in listSchools" data-placeholder="Chọn">
+					<option value="">Chọn danh mục</option>
+				</select>
+                <input type="hidden" required name="id_school" ng-model="post.id_school">
+                <span ng-show="frmEdit.id_school.$invalid" class="text-danger">Phải nhập chọn danh mục trường</span>
+            </div>
+            <div class="clear"> </div>
+        </div>
+        <div class="clear"> </div>
+        <input type="submit" value="Cập nhật thông tin">
+    </form>
+</div>

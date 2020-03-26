@@ -1,0 +1,20 @@
+<div>
+    <form novalidate name="frmUpdate" role="form" ng-submit="UpdateProduct()"> 
+        <div class="register-top-grid">
+            <div>
+                <h4>Upload hình sản phẩm</h4>
+                <input type="file" ngf-select ng-model="files" name="file" accept="image/*" ngf-max-size="2MB" required multiple>
+                <br>
+                <br>Files:
+                <ul>
+                    <li ng-repeat="f in files" style="font:smaller">
+                        <% f.name %>
+                    </li>
+                </ul>
+            </div>
+            <div class="clear"> </div>
+        </div>
+        <div class="clear"> </div>
+        <button ng-disabled="!frmUpdate.$valid" ng-click="uploadFiles(files)">Đổi hình ảnh</button>
+    </form>
+</div>

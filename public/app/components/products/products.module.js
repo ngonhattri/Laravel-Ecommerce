@@ -1,0 +1,34 @@
+(function(){
+    angular.module('myCustomer.products',['customer.common'],function($interpolateProvider){
+        $interpolateProvider.startSymbol('<%');
+        $interpolateProvider.endSymbol('%>');
+    }).config(config);
+    config.$inject = ['$stateProvider','$urlRouterProvider'];
+    function config($stateProvider,$urlRouterProvider) {
+        $stateProvider
+        .state('products',{
+           url:'/product',
+           parent:'base',
+           templateUrl:'app/components/products/productListView.html',
+           controller:'productListController' 
+        })
+        .state('product_edit',{
+            url:'/product/edit/:id',
+            parent:'base',
+            templateUrl:'app/components/products/productEditView.html',
+            controller:'productEditController'
+        })
+        .state('product_image',{
+            url:'/product/image/:id',
+            parent:'base',
+            templateUrl:'app/components/products/productImageView.html',
+            controller:'productImageController'
+        })
+        .state('product_add',{
+            url:'/product/add',
+            parent:'base',
+            templateUrl:'app/components/products/productAddView.html',
+            controller:'productAddController'
+        });
+    }
+})();
